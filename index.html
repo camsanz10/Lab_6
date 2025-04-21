@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Rick and Morty</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="galeria"></div>
+
+  <script>
+    let galeria = document.querySelector('#galeria');
+
+    for (let i = 1; i <= 826; i++) {
+      let div = document.createElement('div');
+      div.className = 'personaje';
+
+      let imagen = document.createElement('img');
+      imagen.setAttribute('src', `https://rickandmortyapi.com/api/character/avatar/${i}.jpeg`);
+      div.appendChild(imagen);
+
+      let nombre = document.createElement('p');
+      nombre.innerText = `Personaje ${i}`;
+      div.appendChild(nombre);
+
+      let mensaje = document.createElement('p');
+      mensaje.innerText = `Este es el mensaje del personaje número ${i}`;
+      div.appendChild(mensaje);
+
+      let boton = document.createElement('button');
+      boton.innerText = 'Eliminar personaje';
+      boton.addEventListener('click', () => {
+        galeria.removeChild(div);
+      });
+      div.appendChild(boton);
+
+      galeria.appendChild(div);
+    }
+  </script>
+</body>
+</html>
